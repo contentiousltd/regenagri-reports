@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Regenagri Reports</title>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  @font-face { font-family:'LT Superior Mono'; src:url('../fonts/LTSuperiorMono-Regular.otf') format('opentype'); font-weight:400; }
+  @font-face { font-family:'LT Superior Mono'; src:url('../fonts/LTSuperiorMono-Medium.otf') format('opentype'); font-weight:500; }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    font-family: 'Bitter', Georgia, serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Background ── */
+  body {
+    background-image: url('fields2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  .bg-overlay {
+    position: fixed; inset: 0; z-index: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(30, 45, 40, 0.72) 0%,
+      rgba(59, 86, 80, 0.55) 100%
+    );
+  }
+
+  /* ── Layout ── */
+  .page {
+    position: relative; z-index: 1;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 48px 24px;
+    gap: 56px;
+  }
+
+  /* ── Header ── */
+  .header {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 12px;
+    text-align: center;
+  }
+  .logo-text {
+    font-family: 'Bitter', serif;
+    font-size: clamp(28px, 3vw, 42px); font-weight: 700;
+    letter-spacing: 6px; text-transform: uppercase;
+    color: #fffdf6;
+    text-shadow: 0 2px 24px rgba(0,0,0,0.35);
+  }
+  .header-title {
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 700; line-height: 110%;
+    color: #fffdf6;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 24px rgba(0,0,0,0.35);
+  }
+  .header-sub {
+    font-family: 'LT Superior Mono', monospace;
+    font-size: 14px; letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,253,246,0.6);
+    margin-top: 6px;
+  }
+
+  /* ── Cards ── */
+  .cards {
+    display: flex; gap: 20px; flex-wrap: wrap;
+    justify-content: center;
+    width: 100%; max-width: 860px;
+  }
+
+  .card {
+    flex: 1 1 340px; max-width: 400px;
+    background: rgba(240,238,233,0.12);
+    border: 1px solid rgba(255,253,246,0.18);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 36px 32px;
+    text-decoration: none;
+    display: flex; flex-direction: column; gap: 20px;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  }
+  .card:hover {
+    background: rgba(255,253,246,0.18);
+    border-color: rgba(255,253,246,0.35);
+    transform: translateY(-3px);
+  }
+  .card-year {
+    font-family: 'LT Superior Mono', monospace;
+    font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: #89b9af;
+  }
+  .card-title {
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 500; line-height: 100%;
+    color: #fffdf6;
+    letter-spacing: -0.5px;
+  }
+  .card-desc {
+    font-size: 16px; line-height: 170%; font-weight: 400;
+    color: rgba(255,253,246,0.65);
+    flex: 1;
+  }
+  .card-cta {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'LT Superior Mono', monospace;
+    font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
+    color: #89b9af;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255,253,246,0.12);
+  }
+  .card-cta svg { transition: transform 0.2s; }
+  .card:hover .card-cta svg { transform: translateX(4px); }
+
+  .badge {
+    display: inline-flex; align-items: center;
+    padding: 4px 12px; border-radius: 100px;
+    background: #89b9af; color: #3b5650;
+    font-family: 'LT Superior Mono', monospace;
+    font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+    font-weight: 500; align-self: flex-start;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    font-family: 'LT Superior Mono', monospace;
+    font-size: 14px; font-weight: 600; letter-spacing: 0.5px;
+    color: rgba(255,253,246,0.3);
+    text-align: center;
+  }
+  .footer a { color: rgba(255,253,246,0.45); text-decoration: none; }
+  .footer a:hover { color: rgba(255,253,246,0.7); }
+</style>
+</head>
+<body>
+<div class="bg-overlay"></div>
+
+<div class="page">
+
+  <div class="header">
+    <div class="logo-text">Regenagri</div>
+    <h1 class="header-title" style="font-size:80px">Annual Impact Reports</h1>
+    <div class="header-sub">Regenerative agriculture · Year in review</div>
+  </div>
+
+  <div class="cards">
+
+    <a class="card" href="https://2025.regenagri.org">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="card-year">Impact Report</span>
+        <span class="badge">Latest</span>
+      </div>
+      <div class="card-title">2025</div>
+      <div class="card-desc">
+        Our most recent report: highlights, partner stories, uptake and impact results, and what's next for regenerative agriculture.
+      </div>
+      <div class="card-cta">
+        Read the 2025 report
+        <svg width="16" height="10" viewBox="0 0 16 10" fill="none">
+          <path d="M1 5H15M15 5L10 1M15 5L10 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+        </svg>
+      </div>
+    </a>
+
+    <a class="card" href="https://2024.regenagri.org">
+      <span class="card-year">Impact Report</span>
+      <div class="card-title">2024</div>
+      <div class="card-desc">
+        A year in review: the highlights, partner success stories, uptake and impact results, and what was next for our programme.
+      </div>
+      <div class="card-cta">
+        Read the 2024 report
+        <svg width="16" height="10" viewBox="0 0 16 10" fill="none">
+          <path d="M1 5H15M15 5L10 1M15 5L10 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/>
+        </svg>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="footer">
+    <a href="https://regenagri.org">regenagri.org</a>
+    &nbsp;·&nbsp; Securing the health of the land and the wealth of those who live on it
+  </div>
+
+</div>
+</body>
+</html>

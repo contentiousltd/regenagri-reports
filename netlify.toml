@@ -1,58 +1,253 @@
-# This host used to serve the 2024 impact report. It now serves the index page
-# that links to each year's report, so "/" belongs to this site and must not be
-# redirected -- but every deep path from the old report still 404s here, and
-# those URLs are the ones in circulation from before the report moved to
-# 2024.regenagri.org.
+# This host served the 2024 impact report before it moved to its own subdomain.
+# It now serves the index page linking to each year, so "/" belongs to this
+# site and must not be redirected -- but every deep path from the old report
+# still 404s here, and those URLs are the ones in circulation.
 #
-# The rules below forward them to their new canonical homes. They mirror the
-# redirect table in the regenagri-2024 repo, which converts the same old forms
-# once they arrive; sending the final URL straight from here avoids a second
-# hop. Netlify takes the first matching rule, so the specific ones come first.
+# Netlify placeholders match a whole path segment, so ":slug.html" never
+# matches and a bare "/stories/:slug" would rewrite to the literal string.
+# Every rule below is therefore spelled out explicitly.
 [build]
   publish = "."
 
 [[redirects]]
-  from = "/stories/:slug.html"
-  to = "https://2024.regenagri.org/stories/:slug"
+  from = "/stories/aritzia.html"
+  to = "https://2024.regenagri.org/stories/aritzia/"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/stories/:slug"
-  to = "https://2024.regenagri.org/stories/:slug"
+  from = "/stories/aritzia"
+  to = "https://2024.regenagri.org/stories/aritzia/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/stories/fazenda-tres-meninas.html"
+  to = "https://2024.regenagri.org/stories/fazenda-tres-meninas/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/stories/fazenda-tres-meninas"
+  to = "https://2024.regenagri.org/stories/fazenda-tres-meninas/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/stories/g-star.html"
+  to = "https://2024.regenagri.org/stories/g-star/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/stories/g-star"
+  to = "https://2024.regenagri.org/stories/g-star/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/stories/greenpods.html"
+  to = "https://2024.regenagri.org/stories/greenpods/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/stories/greenpods"
+  to = "https://2024.regenagri.org/stories/greenpods/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/stories/jcrew.html"
+  to = "https://2024.regenagri.org/stories/jcrew/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/stories/jcrew"
+  to = "https://2024.regenagri.org/stories/jcrew/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/stories/kelani.html"
+  to = "https://2024.regenagri.org/stories/kelani/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/stories/kelani"
+  to = "https://2024.regenagri.org/stories/kelani/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/stories/solidaridad.html"
+  to = "https://2024.regenagri.org/stories/solidaridad/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/stories/solidaridad"
+  to = "https://2024.regenagri.org/stories/solidaridad/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/stories.html"
-  to = "https://2024.regenagri.org/stories"
+  to = "https://2024.regenagri.org/stories/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/pages/brand-stories.html"
-  to = "https://2024.regenagri.org/brands"
+  to = "https://2024.regenagri.org/brands/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/pages/producer-stories.html"
-  to = "https://2024.regenagri.org/producers"
+  to = "https://2024.regenagri.org/producers/"
   status = 301
   force = true
 
-# The plural slug never resolved, but it was linked from the old foreword.
+[[redirects]]
+  from = "/foreword.html"
+  to = "https://2024.regenagri.org/foreword/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/foreword"
+  to = "https://2024.regenagri.org/foreword/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about.html"
+  to = "https://2024.regenagri.org/about/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about"
+  to = "https://2024.regenagri.org/about/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/finance.html"
+  to = "https://2024.regenagri.org/finance/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/finance"
+  to = "https://2024.regenagri.org/finance/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/2024-highlights.html"
+  to = "https://2024.regenagri.org/2024-highlights/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/2024-highlights"
+  to = "https://2024.regenagri.org/2024-highlights/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/impact-results.html"
+  to = "https://2024.regenagri.org/impact-results/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/impact-results"
+  to = "https://2024.regenagri.org/impact-results/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/uptake-results.html"
+  to = "https://2024.regenagri.org/uptake-results/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/uptake-results"
+  to = "https://2024.regenagri.org/uptake-results/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/future-plans.html"
+  to = "https://2024.regenagri.org/future-plans/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/future-plans"
+  to = "https://2024.regenagri.org/future-plans/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/how-were-run.html"
+  to = "https://2024.regenagri.org/how-were-run/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/how-were-run"
+  to = "https://2024.regenagri.org/how-were-run/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/standards-development.html"
+  to = "https://2024.regenagri.org/standards-development/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/standards-development"
+  to = "https://2024.regenagri.org/standards-development/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/the-regenerative-farming-journey.html"
+  to = "https://2024.regenagri.org/the-regenerative-farming-journey/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/the-regenerative-farming-journey"
+  to = "https://2024.regenagri.org/the-regenerative-farming-journey/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/carbon-insetting-programme.html"
+  to = "https://2024.regenagri.org/carbon-insetting-programme/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/carbon-insetting-programme"
+  to = "https://2024.regenagri.org/carbon-insetting-programme/"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/standards-developments"
-  to = "https://2024.regenagri.org/standards-development"
+  to = "https://2024.regenagri.org/standards-development/"
   status = 301
   force = true
-
-# The crawl's mirrored asset directories, for anyone who hotlinked an image.
-[[redirects]]
-  from = "/cdn.prod.website-files.com/*"
-  to = "https://2024.regenagri.org/"
-  status = 301
 
 [[redirects]]
   from = "/_downloads.html"
@@ -60,11 +255,8 @@
   status = 301
   force = true
 
-# Remaining top-level pages of the old report (foreword, about, finance, ...).
-# This is deliberately last: it must not shadow the rules above, and it only
-# matches paths ending in .html, so it cannot catch this site's own root.
 [[redirects]]
-  from = "/:slug.html"
-  to = "https://2024.regenagri.org/:slug"
+  from = "/cdn.prod.website-files.com/*"
+  to = "https://2024.regenagri.org/"
   status = 301
-  force = true
+

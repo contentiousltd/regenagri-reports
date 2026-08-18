@@ -1,0 +1,70 @@
+# This host used to serve the 2024 impact report. It now serves the index page
+# that links to each year's report, so "/" belongs to this site and must not be
+# redirected -- but every deep path from the old report still 404s here, and
+# those URLs are the ones in circulation from before the report moved to
+# 2024.regenagri.org.
+#
+# The rules below forward them to their new canonical homes. They mirror the
+# redirect table in the regenagri-2024 repo, which converts the same old forms
+# once they arrive; sending the final URL straight from here avoids a second
+# hop. Netlify takes the first matching rule, so the specific ones come first.
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/stories/:slug.html"
+  to = "https://2024.regenagri.org/stories/:slug"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/stories/:slug"
+  to = "https://2024.regenagri.org/stories/:slug"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/stories.html"
+  to = "https://2024.regenagri.org/stories"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/brand-stories.html"
+  to = "https://2024.regenagri.org/brands"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/producer-stories.html"
+  to = "https://2024.regenagri.org/producers"
+  status = 301
+  force = true
+
+# The plural slug never resolved, but it was linked from the old foreword.
+[[redirects]]
+  from = "/standards-developments"
+  to = "https://2024.regenagri.org/standards-development"
+  status = 301
+  force = true
+
+# The crawl's mirrored asset directories, for anyone who hotlinked an image.
+[[redirects]]
+  from = "/cdn.prod.website-files.com/*"
+  to = "https://2024.regenagri.org/"
+  status = 301
+
+[[redirects]]
+  from = "/_downloads.html"
+  to = "https://2024.regenagri.org/"
+  status = 301
+  force = true
+
+# Remaining top-level pages of the old report (foreword, about, finance, ...).
+# This is deliberately last: it must not shadow the rules above, and it only
+# matches paths ending in .html, so it cannot catch this site's own root.
+[[redirects]]
+  from = "/:slug.html"
+  to = "https://2024.regenagri.org/:slug"
+  status = 301
+  force = true
